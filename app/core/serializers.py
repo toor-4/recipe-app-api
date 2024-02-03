@@ -18,4 +18,4 @@ class MenuItemSerializer(serializers.ModelSerializer):
         model = MenuItem
         fields = ['id', 'title', 'price', 'featured', 'category',
                   'category_id', 'image']
-        depth = 1
+        # depth = 1
