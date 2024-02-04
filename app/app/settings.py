@@ -16,6 +16,7 @@ DEBUG = bool(int(os.environ.get('DEBUG', 1)))
 
 
 ALLOWED_HOSTS = []
+
 ALLOWED_HOSTS.extend(
     filter(
         None,
@@ -36,6 +37,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken', # run migrate
     'rest_framework',
     'drf_spectacular', # generates OpenAPI
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -45,6 +47,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -156,6 +159,9 @@ REST_FRAMEWORK = {
         ),
 
 }
+
+# Allow requests from any origin during development
+CORS_ALLOW_ALL_ORIGINS = True
 
 SPECTACULAR_SETTINGS = {
     'COMPONENT_SPLIT_REQUEST': True,
